@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration PUBLIC "-//log4j/log4j Configuration//EN" "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p %c.%M:%L - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="loggerFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="logs/common.log" />
+		<param name="Encoding" value="UTF-8" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10000KB" /> <!-- 当日志文件大于500k时，自动备份，形式为server.log.1 -->
+		<param name="MaxBackupIndex" value="10" /><!-- 当server.log.*文件超过5个时，删除最老的一个 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %l -- %p -- %m%n" />
+		</layout>
+	</appender>
+
+	<!-- 接口和功能的正常日志 -->
+	<appender name="interfaceFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="logs/interface.log" />
+		<param name="Encoding" value="UTF-8" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10000KB" /> <!-- 当日志文件大于500k时，自动备份，形式为server.log.1 -->
+		<param name="MaxBackupIndex" value="10" /><!-- 当server.log.*文件超过5个时，删除最老的一个 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %l -- %p -- %m%n" />
+		</layout>
+	</appender>
+
+	<!-- 接口和功能异常日志 -->
+	<appender name="interfaceErrorFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="logs/interfaceError.log" />
+		<param name="Encoding" value="UTF-8" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10000KB" /> <!-- 当日志文件大于500k时，自动备份，形式为server.log.1 -->
+		<param name="MaxBackupIndex" value="10" /><!-- 当server.log.*文件超过5个时，删除最老的一个 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %l -- %p -- %m%n" />
+		</layout>
+	</appender>
+
+	<!-- 业务异常日志 -->
+	<appender name="busiErrorFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="logs/busiError.log" />
+		<param name="Encoding" value="UTF-8" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10000KB" /> <!-- 当日志文件大于500k时，自动备份，形式为server.log.1 -->
+		<param name="MaxBackupIndex" value="10" /><!-- 当server.log.*文件超过5个时，删除最老的一个 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %l -- %p -- %m%n" />
+		</layout>
+	</appender>
+
+	<!-- 业务正常日志 -->
+	<appender name="busiFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="logs/busi.log" />
+		<param name="Encoding" value="UTF-8" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10000KB" /> <!-- 当日志文件大于500k时，自动备份，形式为server.log.1 -->
+		<param name="MaxBackupIndex" value="10" /><!-- 当server.log.*文件超过5个时，删除最老的一个 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %l -- %p -- %m%n" />
+		</layout>
+	</appender>
+
+	<!-- 原子服务正常日志 -->
+	<appender name="atomLogFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="logs/atom.log" />
+		<param name="Encoding" value="UTF-8" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10000KB" /> <!-- 当日志文件大于500k时，自动备份，形式为server.log.1 -->
+		<param name="MaxBackupIndex" value="10" /><!-- 当server.log.*文件超过5个时，删除最老的一个 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %l -- %p -- %m%n" />
+		</layout>
+	</appender>
+
+	<!-- 原子服务异常日志 -->
+	<appender name="atomErrorFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="logs/atomError.log" />
+		<param name="Encoding" value="UTF-8" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10000KB" /> <!-- 当日志文件大于500k时，自动备份，形式为server.log.1 -->
+		<param name="MaxBackupIndex" value="10" /><!-- 当server.log.*文件超过5个时，删除最老的一个 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %l -- %p -- %m%n" />
+		</layout>
+	</appender>
+
+	<!-- mq异常日志 -->
+	<appender name="mqErrorFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="logs/onsError.log" />
+		<param name="Encoding" value="UTF-8" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10000KB" /> <!-- 当日志文件大于500k时，自动备份，形式为server.log.1 -->
+		<param name="MaxBackupIndex" value="10" /><!-- 当server.log.*文件超过5个时，删除最老的一个 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %l -- %p -- %m%n" />
+		</layout>
+	</appender>
+
+	<!-- mq正常日志 -->
+	<appender name="mqFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="logs/ons.log" />
+		<param name="Encoding" value="UTF-8" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10000KB" /> <!-- 当日志文件大于500k时，自动备份，形式为server.log.1 -->
+		<param name="MaxBackupIndex" value="10" /><!-- 当server.log.*文件超过5个时，删除最老的一个 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %l -- %p -- %m%n" />
+		</layout>
+	</appender>
+
+	<logger name="com.cgd.base.util.BusiErrorLogger" additivity="false">
+		<level value="ERROR" />
+		<appender-ref ref="busiErrorFile" />
+	</logger>
+
+	<logger name="com.cgd.base.util.BusiLogger" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="busiFile" />
+	</logger>
+
+	<logger name="com.cgd.base.util.AOPErrorLogger" additivity="false">
+		<level value="ERROR" />
+		<appender-ref ref="interfaceErrorFile" />
+	</logger>
+
+	<logger name="com.cgd.base.util.AOPLogger" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="interfaceFile" />
+	</logger>
+
+	<logger name="com.cgd.base.util.AtomServiceAopErrorLogger"
+		additivity="false">
+		<level value="ERROR" />
+		<appender-ref ref="atomErrorFile" />
+	</logger>
+
+	<logger name="com.cgd.base.util.AtomServiceAopLogger"
+		additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="atomLogFile" />
+	</logger>
+
+	<logger name="com.cgd.base.util.MQErrorLogger" additivity="false">
+		<level value="ERROR" />
+		<appender-ref ref="mqErrorFile" />
+	</logger>
+
+	<logger name="com.cgd.base.util.MQLogger" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="mqFile" />
+	</logger>
+
+	<logger name="com.cgd">
+		<level value="debug" />
+		<appender-ref ref="loggerFile" />
+	</logger>
+
+	<!-- for all other loggers log only info and above log messages -->
+	<root>
+		<priority value="debug" />
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="loggerFile" />
+	</root>
+
+</log4j:configuration> 

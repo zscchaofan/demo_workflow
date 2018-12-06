@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration>
+
+
+	<Appenders>
+		<!--catalina.out日志管理-->
+		<File name="loggerFile" fileName="/home/admin/app/logs/loggerFile.log" append="false">
+			<Log4j1XmlLayout />
+		</File>
+		<!-- 接口和功能的正常日志 -->
+		<File name="interfaceFile" fileName="/home/admin/app/logs/interfaceFile.log" append="true">
+			<Log4j1XmlLayout />
+		</File>
+		<!-- 接口和功能异常日志 -->
+		<File name="interfaceErrorFile" fileName="/home/admin/app/logs/interfaceErrorFile.log" append="true">
+			<Log4j1XmlLayout />
+		</File>
+		<!-- 业务异常日志 -->
+		<File name="busiErrorFile" fileName="/home/admin/app/logs/busiErrorFile.log" append="true">
+			<Log4j1XmlLayout />
+		</File>
+		<!-- 业务正常日志 -->
+		<File name="busiFile" fileName="/home/admin/app/logs/busiFile.log" append="true">
+			<Log4j1XmlLayout />
+		</File>
+		<!-- 原子服务正常日志 -->
+		<File name="atomLogFile" fileName="/home/admin/app/logs/atomLogFile.log" append="true">
+			<Log4j1XmlLayout />
+		</File>
+		<!-- 原子服务异常日志 -->
+		<File name="atomErrorFile" fileName="/home/admin/app/logs/atomErrorFile.log" append="true">
+			<Log4j1XmlLayout />
+		</File>
+
+		<!-- mq异常日志 -->
+		<File name="mqErrorFile" fileName="/home/admin/app/logs/mqErrorFile.log" append="true">
+			<Log4j1XmlLayout />
+		</File>
+		<!-- mq正常日志 -->
+		<File name="mqFile" fileName="/home/admin/app/logs/mqFile.log" append="true">
+			<Log4j1XmlLayout />
+		</File>
+		<!-- 定时任务异常日志 -->
+		<File name="timedTaskErrorFile" fileName="/home/admin/app/logs/timedTaskErrorFile.log" append="true">
+			<Log4j1XmlLayout />
+		</File>
+		<!-- 定时任务正常日志 -->
+		<File name="timedTaskFile" fileName="/home/admin/app/logs/timedTaskFile.log" append="true">
+			<Log4j1XmlLayout />
+		</File>
+
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss:SSS} [%p] [%t] %c{1} - %m%n"/>
+		</Console>
+
+	</Appenders>
+
+
+
+	<Loggers>
+		<Logger name="com.cgd" level="debug">
+			<AppenderRef ref="loggerFile"/>
+		</Logger>
+
+		<!-- 接口和功能的正常日志 -->
+		<Logger name="com.cgd.base.util.AOPLogger" level="INFO">
+			<AppenderRef ref="interfaceFile"/>
+		</Logger>
+		<!-- 接口和功能异常日志 -->
+		<Logger name="com.cgd.base.util.AOPErrorLogger" level="ERROR">
+			<AppenderRef ref="interfaceErrorFile"/>
+		</Logger>
+		<!-- 业务异常日志 -->
+		<Logger name="com.cgd.base.util.BusiErrorLogger" level="ERROR">
+			<AppenderRef ref="busiErrorFile"/>
+		</Logger>
+		<!-- 业务正常日志 -->
+		<Logger name="com.cgd.base.util.BusiLogger" level="INFO">
+			<AppenderRef ref="busiFile"/>
+		</Logger>
+
+		<!-- 原子服务正常日志 -->
+		<Logger name="com.cgd.base.util.AtomServiceAopLogger" level="INFO">
+			<AppenderRef ref="atomLogFile"/>
+		</Logger>
+
+		<!-- 原子服务异常日志 -->
+		<Logger name="com.cgd.base.util.AtomServiceAopErrorLogger" level="ERROR">
+			<AppenderRef ref="atomErrorFile"/>
+		</Logger>
+
+
+		<!-- mq异常日志 -->
+		<Logger name="com.cgd.base.util.MQErrorLogger" level="INFO">
+			<AppenderRef ref="mqErrorFile"/>
+		</Logger>
+
+		<!-- mq正常日志 -->
+		<Logger name="com.cgd.base.util.MQLogger" level="ERROR">
+			<AppenderRef ref="mqFile"/>
+		</Logger>
+
+		<!-- 定时任务正常日志 -->
+		<Logger name="com.cgd.base.util.TimedTaskAopLogger" level="INFO">
+			<AppenderRef ref="timedTaskFile"/>
+		</Logger>
+
+		<!-- 定时任务异常日志 -->
+		<Logger name="com.cgd.base.util.TimedTaskAopErrorLogger" level="ERROR">
+			<AppenderRef ref="timedTaskErrorFile"/>
+		</Logger>
+
+		<Root level="DEBUG">
+			<AppenderRef ref="STDOUT"/>
+			<appender-ref ref="loggerFile" />
+		</Root>
+	</Loggers>
+
+</Configuration>
