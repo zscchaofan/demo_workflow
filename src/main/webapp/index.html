@@ -1,0 +1,64 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<head>
+
+
+    <script src="activiti/editor-app/libs/angular_1.2.13/angular.min.js"></script>
+    <script src="activiti/editor-app/libs/angular_1.2.13/angular-animate.min.js"></script>
+
+
+</head>
+<body>
+<h2>Hello User!</h2>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+
+    <button ng-click="getModelId()">新建流程图</button>
+    <input type='text' ng-model="modelId" value="{{modelId}}}">
+
+    <button ng-click="showModelPage()">查看流程图</button>
+</div>
+
+
+
+<script>
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl",['$scope','$http',function($scope,$http){
+        $scope.modelId = 0;
+        $scope.getModelId = function(){
+            $http({
+                method: 'GET',
+                url: '/service/models/newModel'
+            }).then(function successCallback(response) {
+                //alert(response.data);
+                $scope.modelId = response.data;
+            }, function errorCallback(response) {
+                // 请求失败执行代码
+            });
+        };
+
+        $scope.showModelPage = function(){
+            if($scope.modelId == 0){
+                alert("请先创建一个模型");
+                return;
+            }
+            window.open($scope.getRealPath() + 'activiti/modeler.html?modelId='+$scope.modelId);
+        };
+        $scope.getRealPath = function () {
+            var curWwwPath = window.document.location.href;
+            var pathName = window.document.location.pathname;
+            var pos = curWwwPath.indexOf(pathName);
+            var localhostPaht = curWwwPath.substring(0, pos);
+            var projectName = pathName.substring(0, pathName.substr(1).indexOf(
+                '/') + 1);
+            var realPath = localhostPaht + projectName;
+            return realPath;
+        }
+
+    }]);
+
+</script>
+</body>
+</html>
