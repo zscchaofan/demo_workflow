@@ -127,7 +127,7 @@ jQuery.extend({
                 if ( s.complete )
                     s.complete(xml, status);
 
-                jQuery(io).unbind()
+                jQuery(io).unbind();
 
                 setTimeout(function()
 									{	try 
@@ -140,12 +140,12 @@ jQuery.extend({
 											jQuery.handleError(s, xml, null, e);
 										}									
 
-									}, 100)
+									}, 100);
 
                 xml = null
 
             }
-        }
+        };
 		
         // Timeout checker
         if ( s.timeout > 0 ) 
