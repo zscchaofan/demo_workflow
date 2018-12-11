@@ -130,7 +130,7 @@ Array.prototype.distinct = function(){
         }
     }
 	return result;
-}
+};
 Array.prototype.remove=function(dx) 
 { 
     if(isNaN(dx)||dx>this.length){return false;} 
@@ -142,7 +142,7 @@ Array.prototype.remove=function(dx)
         } 
     } 
     this.length-=1 
-} 
+};
 
 
 
@@ -172,7 +172,7 @@ Date.prototype.format = function(format) {
        "q+" :Math.floor((this.getMonth() + 3) / 3), // quarter   
        "S"  :this.getMilliseconds()   
     // millisecond   
-    }   
+    };
  
    if (/(y+)/.test(format)) {   
        format = format.replace(RegExp.$1, (this.getFullYear() + "")   
@@ -186,5 +186,5 @@ Date.prototype.format = function(format) {
       }   
    }   
    return format;   
-}
+};
 
